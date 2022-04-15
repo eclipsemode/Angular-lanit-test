@@ -1,0 +1,56 @@
+.block-link
+	height: 69px
+	cursor: pointer
+	color: $invert-color-text-default
+	display: flex
+	flex-direction: row
+	align-items: flex-end
+	justify-content: flex-start
+
+	.block-link__text
+		padding: 23px 36px 20px 36px
+
+		background-repeat: no-repeat
+		width: 100%
+		height: 100%
+		display: flex
+		align-items: center
+		justify-content: flex-start
+
+		.text
+			font-weight: 300
+			font-size: 23px
+			line-height: 26px
+			display: flex
+			flex-direction: row
+			align-items: center
+			justify-content: space-between
+			color: $invert-color-text-default
+
+	&--with-image
+		height: 139px
+
+		.block-link__text
+			align-items: flex-end
+			justify-content: flex-end
+
+@media (max-width: 1599px)
+	.block-link
+		.block-link__text
+			padding: 23px 36px 20px 36px
+
+			.text
+				font-size: 21px
+				line-height: 24px
+
+		&--with-image
+			height: 150px
+
+@media (max-width: 1230px)
+	.block-link
+		height: 60px
+
+		.block-link__text
+			.text
+				font-size: 18px
+				line-height: 21px

@@ -1,0 +1,57 @@
+.weather_container
+	color: $invert-color-text-default
+	font-weight: 300
+	font-size: 18px
+	line-height: 21px
+	display: flex
+	align-items: center
+	justify-content: flex-start
+
+	.icon-weather
+		width: 25px
+		height: 25px
+		background-image: url(../img/weather_snow.svg)
+
+		&_atmosphere
+			background-image: $icon-weather-atmosphere
+
+		&_clear
+			background-image: $icon-weather-clear
+
+		&_clouds
+			background-image: $icon-weather-clouds
+
+		&_few_clouds
+			background-image: $icon-weather-few-clouds
+
+		&_rain
+			background-image: $icon-weather-rain
+
+		&_snow
+			background-image: $icon-weather-snow
+
+		&_thunderstorm
+			background-image: $icon-weather-thunderstorm
+
+	span
+		margin-right: 15px
+
+		&:last-child
+			margin-right: 0
+
+@media (max-width: 1599px)
+	.weather_container
+		font-size: 16px
+		line-height: 19px
+		.icon-weather
+			width: 22px
+			height: 22px
+
+		span
+			margin-right: 15px
+
+@media (max-width: 1230px)
+	.weather_container
+		font-size: 14px
+		line-height: 17px
+

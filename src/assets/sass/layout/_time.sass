@@ -1,0 +1,27 @@
+.time_container
+	color: $invert-color-text-default
+	font-weight: 300
+	font-size: 18px
+	line-height: 21px
+	display: flex
+	align-items: center
+	justify-content: flex-start
+
+	span
+		margin-right: 15px
+
+		&:last-child
+			margin-right: 0
+
+	.time
+		margin-left: 8px
+
+@media (max-width: 1599px)
+	.time_container
+		font-size: 16px
+		line-height: 19px
+
+@media (max-width: 1230px)
+	.time_container
+		font-size: 14px
+		line-height: 17px

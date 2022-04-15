@@ -1,0 +1,5 @@
+<div *ngIf="weather" class="weather_container">
+    <span class="icon icon-weather icon-weather_{{weatherTypes[weather.cloudType]}}"></span>
+    <span>{{ weather.temperature }}</span>
+    <span>{{ text }}</span>
+</div>

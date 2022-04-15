@@ -1,0 +1,27 @@
+<header class="header">
+    <div class="w_wrapper">
+        <div class="tbl">
+            <div class="right_block">
+                <div class="left_part">
+                    <a href="/" class="ico-search">Главная</a>
+                    <a href="/reservation" class="ico-search">Бронирование</a>
+                </div>
+                <div class="right_part">
+                    <form class="search-wrapper">
+                        <input class="search" type="text">
+                    </form>
+                    <div class="city_data_container">
+                        <div class="city_data">
+                            <app-weather *ngIf="weather && weather['Tomsk']" [weather]="weather['Tomsk']" [text]="'в Томске'"></app-weather>
+                            <app-time [city]="citiesEnum.Tomsk" [text]="'в Томске'"></app-time>
+                        </div>
+                        <div class="city_data">
+                            <app-weather *ngIf="weather && weather['Moscow']" [weather]="weather['Moscow']" [text]="'в Москве'"></app-weather>
+                            <app-time [city]="citiesEnum.Moscow" [text]="'в Москве'"></app-time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

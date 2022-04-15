@@ -1,0 +1,7 @@
+<div class="block-link {{cssClasses}}" [ngClass]="{ 'block-link--with-image': data.image }" title="Перейти">
+    <div class="block-link__text" [ngStyle]="{ 'background-image': data.image ? 'url(' + data.image + ')' : '' }">
+        <a class="text" href="{{data.link}}">
+            <span class="text-link">{{data.text}}</span>
+        </a>
+    </div>
+</div>

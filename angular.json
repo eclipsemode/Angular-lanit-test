@@ -1,0 +1,117 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "baseForInternshipAssignment": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "sass"
+                }
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/baseForInternshipAssignment",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "assets": [
+                            "src/assets/img",
+                            "src/assets/fonts",
+                            "src/assets/css/screen.css"
+                        ],
+                        "styles": [
+                            "src/styles.sass"
+                        ],
+                        "allowedCommonJsDependencies": [
+                            "global/document",
+                            "@babel/runtime/helpers/possibleConstructorReturn",
+                            "@babel/runtime/helpers/inherits",
+                            "@babel/runtime/helpers/inheritsLoose",
+                            "@babel/runtime/helpers/construct",
+                            "mux.js/lib/mp4/probe",
+                            "mux.js/lib/tools/ts-inspector.js"
+                        ],
+                        "scripts": [],
+                        "resourcesOutputPath": "assets"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": {
+                                "fonts": true,
+                                "styles": {
+                                    "inlineCritical": true
+                                }
+                            },
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "40kb"
+                                }
+                            ]
+                        },
+                        "es5": {
+                            "tsConfig": "./tsconfig.es5.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "baseForInternshipAssignment:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "baseForInternshipAssignment:build:production"
+                        },
+                        "es5": {
+                            "browserTarget": "baseForInternshipAssignment:build:es5"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "baseForInternshipAssignment",
+    "cli": {
+        "analytics": false
+    }
+}

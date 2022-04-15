@@ -1,0 +1,200 @@
+.header
+	position: relative
+	width: 100%
+	left: 0
+	top: 0
+	transition: height .4s ease-out 0s
+	color: $invert-color-text-default
+	font-weight: 300
+	font-size: 18px
+	line-height: 21px
+	background: $header-color
+	z-index: 100
+	display: flex
+	align-items: center
+	justify-content: center
+	height: 124px
+
+	a
+		color: $invert-color-text-default
+		text-decoration: none
+
+		&:hover,
+		&:active,
+		&:focus
+			text-decoration: underline !important
+			color: $invert-color-text-default
+
+	& > .w_wrapper
+		padding-left: 0
+		padding-right: 0
+		margin: 0
+		position: static
+
+		.tbl
+			margin: 0 auto
+
+	.w_wrapper
+		padding: 17px 0
+		height: 100%
+
+		.tbl
+			width: 1836px
+			height: 100%
+
+	.right_block
+		display: flex
+		text-align: right
+		align-items: flex-end
+		height: 100%
+
+		.left_part,
+		.right_part
+			display: flex
+
+		.left_part
+			width: 30%
+			height: 100%
+			display: flex
+			align-items: flex-end
+			margin-bottom: 9px
+
+			& > *:first-child
+				margin-right: 46px
+
+		.right_part
+			width: 70%
+			justify-content: flex-end
+			align-items: flex-end
+
+			& > *
+				margin-bottom: 9px
+
+			.search-wrapper
+				margin-right: 300px
+				margin-bottom: 0
+
+			.traffic-congestion_container
+				margin-right: 40px
+
+			.city_data_container
+				display: flex
+				flex-direction: column
+
+				.city_data
+					display: flex
+					justify-content: space-between
+					margin-bottom: 20px
+
+					&:last-child
+						margin-bottom: 0
+
+					.time_container
+						margin-left: 35px
+
+.search-wrapper
+	width: 288px
+	height: 41px
+
+.search
+	display: block
+	align-items: center
+	width: 100%
+	height: 100%
+	min-height: 32px
+	border-color: $invert-color-text-default
+	border-width: 1px
+	border-style: solid
+	border-radius: 40px
+	background: url(../img/search.svg) no-repeat 20px 50%
+	padding-left: 50px
+
+	font-weight: 300
+	font-size: 18px
+	line-height: 21px
+	color: $invert-color-text-default
+
+@media (max-width: 1900px)
+	.header
+		.w_wrapper
+			.tbl
+				width: 1540px
+
+@media (max-width: 1599px)
+	.header
+		font-size: 16px
+		line-height: 19px
+
+		.w_wrapper
+			padding: 15px 0
+			height: 100%
+
+			.tbl
+				width: 1170px
+
+		.right_block
+			.left_part
+				width: 20%
+				margin-bottom: 9px
+
+				& > *:first-child
+					margin-right: 40px
+
+			.right_part
+				width: 80%
+
+				.search-wrapper
+					margin-right: 150px
+
+				.traffic-congestion_container
+					margin-right: 35px
+
+				.city_data_container
+					.city_data
+						.time_container
+							margin-left: 30px
+
+	.search-wrapper
+		width: 250px
+		height: 38px
+
+	.search
+		font-size: 16px
+		line-height: 19px
+
+@media (max-width: 1230px)
+	.header
+		font-size: 14px
+		line-height: 17px
+
+		.w_wrapper
+			.tbl
+				width: 1015px
+
+		.right_block
+			.left_part
+				margin-left: 15px
+				width: 110px
+				flex-direction: column
+				align-items: flex-start
+				justify-content: flex-end
+
+				& > *:first-child
+					margin-right: 0
+
+			.right_part
+				width: calc(100% - 110px)
+				justify-content: flex-end
+				align-items: flex-end
+
+				.search-wrapper
+					margin-bottom: 3px
+
+	.search-wrapper
+		width: 200px
+		height: 35px
+
+	.search
+		font-size: 14px
+		line-height: 17px
+

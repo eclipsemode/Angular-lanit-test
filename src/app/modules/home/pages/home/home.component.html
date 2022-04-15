@@ -1,0 +1,9 @@
+<div class="page_content">
+    <section *ngIf="blocks && blocks.length" class="main-section resources-block">
+        <div class="resources-block__content-container">
+            <ng-container *ngFor="let item of blocks; let i = index">
+                <app-block-link [data]="item" [cssClasses]="'resource-block resource-block--' + i"></app-block-link>
+            </ng-container>
+        </div>
+    </section>
+</div>

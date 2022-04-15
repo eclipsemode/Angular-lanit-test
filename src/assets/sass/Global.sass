@@ -1,0 +1,87 @@
+html
+	height: 100%
+*
+	box-sizing: border-box
+	padding: 0
+	margin: 0
+	font-family: 'Ubuntu', sans-serif
+
+	&:before, &:after
+		box-sizing: inherit
+
+body
+	min-width: 1024px
+	overflow: auto
+	font: 14px 'Ubuntu', sans-serif
+	font-weight: 400
+	line-height: 19px
+	margin: 0
+	padding: 0
+
+	& > *
+		width: 100%
+
+	svg, picture
+		display: block
+
+	img
+		max-width: 100%
+		height: auto
+		border: 0
+		vertical-align: middle
+
+	ul, li
+		list-style: none
+
+	a, input, textarea
+		color: inherit
+		font-family: inherit
+
+	a
+		font-size: inherit
+		text-decoration: none !important
+
+		&:hover,
+		&:active,
+		&:focus
+			text-decoration: underline !important
+
+	button
+		margin: 0
+		font-size: 14px
+		font-family: inherit
+		outline: none
+		border: none
+		cursor: pointer
+		overflow: visible
+
+	button:focus
+		outline: none
+
+.sc_wrapper
+	margin: 0 auto
+	min-height: 100vh
+
+.icon
+	display: inline-flex
+	justify-content: center
+	align-items: center
+	background-repeat: no-repeat
+	background-size: contain
+
+h2
+	font-weight: 300 !important
+	font-size: 42px !important
+	line-height: 34px !important
+	text-align: center
+	color: $header-color
+
+@media (max-width: 1599px)
+	h2
+		font-size: 40px !important
+		line-height: 32px !important
+
+@media (max-width: 1230px)
+	h2
+		font-size: 36px !important
+		line-height: 30px !important
