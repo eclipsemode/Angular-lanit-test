@@ -85,6 +85,8 @@ body button:focus {
 .sc_wrapper {
   margin: 0 auto;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .icon {
@@ -446,7 +448,6 @@ table,
 .weather_container .icon-weather {
   width: 25px;
   height: 25px;
-  background-image: url(../img/weather_snow.svg);
 }
 .weather_container .icon-weather_atmosphere {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' xml:space='preserve'%3E%3Cpath fill='none' stroke='%23FFF' stroke-width='2' stroke-miterlimit='10' d='M55 40c4.565 0 8-3.435 8-8 0-4.565-3.435-9-8-9 0-11.414-9.586-20-21-20-10.102 0-19.2 6.423-21 16h-2C5.292 19 1 24.292 1 30s4.292 10 10 10M13 40h40M13 48h40M13 56h40'/%3E%3C/svg%3E");
@@ -595,6 +596,10 @@ table,
     line-height: 17px;
   }
 }
+app-footer {
+  margin-top: auto;
+}
+
 .footer {
   text-align: center;
   overflow: hidden;
