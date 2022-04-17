@@ -12,6 +12,11 @@ const routes: Routes = [
                 path: '',
                 loadChildren: () => import('./modules/home/home.module').then(module => module.HomeModule),
                 data: { module: ModulesInfo.home.name }
+            },
+            {
+                path: 'reservation',
+                loadChildren: () => import('./modules/reservation/reservation.module').then(module => module.ReservationModule),
+                data: {module: ModulesInfo.reservation.name}
             }
         ]
     }
