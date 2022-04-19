@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 // import { HomeComponent } from '@home/pages';
 import { ModulesInfo } from '../index';
-import {ReservationComponent} from "./pages";
+import {ReservationComponent} from "./pages/";
 
 const routes: Routes = [
     {
-        path: 'reservation',
+        path: '',
         component: ReservationComponent,
         data: { mode: ModulesInfo.reservation.name, needNavigationInsideTheModule: false}
     }

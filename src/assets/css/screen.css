@@ -915,4 +915,11 @@ app-footer {
     background-position: 20%;
   }
 }
+.reservation-block {
+  padding: 32px 0 29px;
+}
+
+.reservation {
+  row-gap: 1rem;
+}
 /*# sourceMappingURL=screen.css.map */
