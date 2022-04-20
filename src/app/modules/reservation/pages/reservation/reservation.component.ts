@@ -1,12 +1,62 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
-
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {roomDataForm} from "../../models/Intarface";
 
 @Component({
     selector: 'app-reservation',
     templateUrl: './reservation.component.html'
 })
 export class ReservationComponent implements OnInit, AfterContentInit {
+
     ngOnInit(): void {
+    }
+
+    constructor(private formBuilder: FormBuilder) {}
+
+    dataForm = this.formBuilder.group({
+        roomTypeId: [0, Validators.required],
+        countOfGuests: [1, Validators.required],
+        startDate: ['', Validators.required],
+        endDate: ['', Validators.required],
+        withAnimal: [{value: false, disabled: false}],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        patronymicName: '',
+        birthday: ''
+    })
+
+    dataFormReceived: roomDataForm =
+            {
+            roomTypeId: 0,
+            countOfGuests: 0,
+            startDate: '',
+            endDate: '',
+            withAnimal: false,
+            user: {
+                firstName: '',
+                lastName: '',
+                patronymicName: '',
+                birthday: ''
+            }
+        }
+
+
+    public getDataForm(data: FormGroup) {
+        if (data.valid) {
+            this.dataFormReceived = {
+                roomTypeId: Number(data.controls.roomTypeId.value),
+                countOfGuests: Number(data.controls.countOfGuests.value),
+                startDate: data.controls.startDate.value,
+                endDate: data.controls.endDate.value,
+                withAnimal: data.controls.withAnimal.value,
+                user: {
+                    firstName: data.controls.firstName.value,
+                    lastName: data.controls.lastName.value,
+                    patronymicName: data.controls.patronymicName.value,
+                    birthday: data.controls.birthday.value
+                }
+            }
+        }
     }
 
     formValidate(): void {
@@ -15,7 +65,7 @@ export class ReservationComponent implements OnInit, AfterContentInit {
 
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
+                form.addEventListener('submit', function (event): void {
                     if (!form.checkValidity()) {
                         event.preventDefault()
                         event.stopPropagation()
@@ -39,28 +89,10 @@ export class ReservationComponent implements OnInit, AfterContentInit {
     }
 
     ngAfterContentInit() {
-    document.querySelectorAll('.pattern').forEach(element => {
-        this.textInput(element)
-    })
-    // this.textInput(document.querySelectorAll('.pattern').forEach(element => {
-    //     return element
-    // }))
+        let patternElement = document.querySelectorAll('.pattern')
+
+        patternElement.forEach(element => {
+            this.textInput(element)
+        })
     }
-
-
-    // blocks: BlockLinkModel[];
-    //
-    // constructor(private homeService: HomeService) {}
-    //
-    // ngOnInit(): void {
-    //     this.homeService.loadInfo().pipe(
-    //         map(data => {
-    //             this.blocks = data;
-    //         }),
-    //         catchError(error => {
-    //             console.error(error);
-    //             return [];
-    //         })
-    //     ).subscribe();
-    // }
 }

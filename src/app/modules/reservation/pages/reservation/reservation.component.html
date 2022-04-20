@@ -1,64 +1,67 @@
 <div class="page_content">
     <section class="main-section reservation-block container">
-        <form method="get" class="row needs-validation reservation" novalidate>
+        <form method="get" class="row needs-validation reservation" [formGroup]="dataForm" (ngSubmit)="getDataForm(dataForm)">
+
             <div class="col-md-4 validate-me">
                 <label for="validationCustom01" class="form-label">Имя</label>
-                <input #nameInput type="text" class="form-control pattern" id="validationCustom01" #wordPattern (input)="textInput(wordPattern)" placeholder="Имя" required>
+                <input #nameInput formControlName="firstName" type="text" class="form-control pattern" id="validationCustom01" name="firstName" (input)="textInput(nameInput)" placeholder="Имя" required>
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom02" class="form-label">Фамилия</label>
-                <input #lastnameInput type="text" class="form-control pattern" id="validationCustom02" #wordPattern (input)="textInput(wordPattern)" placeholder="Фамилия" required>
+                <input #lastnameInput formControlName="lastName" type="text" class="form-control pattern" id="validationCustom02" name="lastName" (input)="textInput(lastnameInput)" placeholder="Фамилия" required>
             </div>
             <div class="col-md-4">
                 <label for="validationCustom03" class="form-label">Отчество</label>
-                <input type="text" class="form-control pattern no-validate" id="validationCustom03" #wordPattern (input)="textInput(wordPattern)" placeholder="Отчество">
+                <input #patronymicInput type="text" formControlName="patronymicName" class="form-control pattern no-validate" id="validationCustom03" name="patronymicName" (input)="textInput(patronymicInput)" placeholder="Отчество">
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Дата рождения</label>
-                <input type="date" class="form-control" id="validationCustom04">
+                <input type="date" formControlName="birthday" class="form-control" id="validationCustom04" name="birthday" ngModel>
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom05" class="form-label">Количество гостей</label>
-                <select #guestInput class="custom-select" id="validationCustom05" required>
+                <select #guestInput formControlName="countOfGuests" class="custom-select" id="validationCustom05" name="countOfGuests" ngModel required>
                     <option selected disabled value="">Выберите...</option>
-                    <option>1 гость</option>
-                    <option>2 гостя</option>
-                    <option>3 гостя</option>
-                    <option>4 гостя</option>
-                    <option>5 гостей</option>
-                    <option>6 гостей</option>
+                    <option value="0">1 гость</option>
+                    <option value="1">2 гостя</option>
+                    <option value="2">3 гостя</option>
+                    <option value="3">4 гостя</option>
+                    <option value="4">5 гостей</option>
+                    <option value="5">6 гостей</option>
                 </select>
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom06" class="form-label">Тип номера</label>
-                <select class="custom-select" id="validationCustom06" required>
+                <select #roomTypeInput class="custom-select" formControlName="roomTypeId" id="validationCustom06" name="roomTypeId" ngModel required>
                     <option selected disabled value="">Выберите...</option>
-                    <option>Стандарт одноместный</option>
-                    <option>Стандарт двухместный</option>
-                    <option>Семейный (до 4-х гостей)</option>
-                    <option>Двухкомнатный (до 6-ти гостей)</option>
-                    <option>Люкс двухместный</option>
+                    <option value="0">Стандарт одноместный</option>
+                    <option value="1">Стандарт двухместный</option>
+                    <option value="2">Семейный (до 4-х гостей)</option>
+                    <option value="3">Двухкомнатный (до 6-ти гостей)</option>
+                    <option value="4">Люкс двухместный</option>
                 </select>
             </div>
 
     <div class="col-md-4 validate-me">
         <label for="validationCustom07" class="form-label">Дата заезда</label>
-        <input type="date" class="form-control" id="validationCustom07" required>
+        <input #startDate type="date" formControlName="startDate" class="form-control" id="validationCustom07" name="startDate" ngModel required>
     </div>
     <div class="col-md-4 validate-me">
         <label for="validationCustom08" class="form-label">Дата выезда</label>
-        <input type="date" class="form-control" id="validationCustom08" required>
+        <input #endDate type="date" formControlName="endDate" class="form-control" id="validationCustom08" name="endDate" ngModel required>
     </div>
     <div class="col-md-4" style="display: flex; align-items: center; column-gap: 0.5rem; margin-top: 1.5rem">
-        <input type="checkbox" class="custom-checkbox" id="validationFormCheck09">
+        <input type="checkbox" formControlName="withAnimal" class="custom-checkbox" id="validationFormCheck09" name="withAnimal" ngModel>
         <label class="text" for="validationFormCheck09" style="margin-bottom: 0">Проживание с животными?</label>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" >
         <button class="btn btn-primary" type="submit" (click)="formValidate()">Забронировать</button>
-        <input type="text" required style="display: none" [value]="nameInput.value && lastnameInput.value && guestInput.value">
-                        <div class="invalid-feedback">
-                            Пожалуйста, заполните обязательные поля.
-                        </div>
+        <div class="col-md-12 validate-me">
+            <input type="text" style="display: none" [value]="nameInput.value && lastnameInput.value && guestInput.value && roomTypeInput.value && startDate.value && endDate.value" name="firstName" #wordPattern (input)="textInput(wordPattern)" required>
+            <div class="invalid-feedback" style="margin-left: -1rem">
+                Пожалуйста, заполните обязательные поля.
+            </div>
+        </div>
     </div>
         </form>
     </section>
