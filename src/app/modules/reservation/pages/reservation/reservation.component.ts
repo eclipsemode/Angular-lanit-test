@@ -1,17 +1,24 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {roomDataForm} from "../../models/Intarface";
+import {HttpService} from "../../services/http.service";
+import {RoomType} from "../../models/RoomType";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
     selector: 'app-reservation',
-    templateUrl: './reservation.component.html'
+    templateUrl: './reservation.component.html',
+    providers: [HttpService]
 })
 export class ReservationComponent implements OnInit, AfterContentInit {
+    rooms: RoomType[]=[];
+    error: any
 
     ngOnInit(): void {
+        this.httpService.getRoom().subscribe((data: RoomType[]) => this.rooms=data);
     }
 
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(private http: HttpClient, private httpService: HttpService, private formBuilder: FormBuilder) {}
 
     dataForm = this.formBuilder.group({
         roomTypeId: [0, Validators.required],
@@ -40,7 +47,6 @@ export class ReservationComponent implements OnInit, AfterContentInit {
             }
         }
 
-
     public getDataForm(data: FormGroup) {
         if (data.valid) {
             this.dataFormReceived = {
@@ -57,6 +63,9 @@ export class ReservationComponent implements OnInit, AfterContentInit {
                 }
             }
         }
+    }
+
+    guestSelected() {
     }
 
     formValidate(): void {

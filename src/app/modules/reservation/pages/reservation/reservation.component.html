@@ -4,15 +4,15 @@
 
             <div class="col-md-4 validate-me">
                 <label for="validationCustom01" class="form-label">Имя</label>
-                <input #nameInput formControlName="firstName" type="text" class="form-control pattern" id="validationCustom01" name="firstName" (input)="textInput(nameInput)" placeholder="Имя" required>
+                <input #nameInput formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (input)="textInput(nameInput)" placeholder="Имя" required>
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom02" class="form-label">Фамилия</label>
-                <input #lastnameInput formControlName="lastName" type="text" class="form-control pattern" id="validationCustom02" name="lastName" (input)="textInput(lastnameInput)" placeholder="Фамилия" required>
+                <input #lastnameInput formControlName="lastName" type="text" ngModel class="form-control pattern" id="validationCustom02" name="lastName" (input)="textInput(lastnameInput)" placeholder="Фамилия" required>
             </div>
             <div class="col-md-4">
                 <label for="validationCustom03" class="form-label">Отчество</label>
-                <input #patronymicInput type="text" formControlName="patronymicName" class="form-control pattern no-validate" id="validationCustom03" name="patronymicName" (input)="textInput(patronymicInput)" placeholder="Отчество">
+                <input #patronymicInput type="text" formControlName="patronymicName" ngModel class="form-control pattern no-validate" id="validationCustom03" name="patronymicName" (input)="textInput(patronymicInput)" placeholder="Отчество">
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Дата рождения</label>
@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom05" class="form-label">Количество гостей</label>
-                <select #guestInput formControlName="countOfGuests" class="custom-select" id="validationCustom05" name="countOfGuests" ngModel required>
+                <select #guestInput formControlName="countOfGuests" class="custom-select ttt" id="validationCustom05" ngModel name="countOfGuests" required>
                     <option selected disabled value="">Выберите...</option>
                     <option value="0">1 гость</option>
                     <option value="1">2 гостя</option>
@@ -32,26 +32,21 @@
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom06" class="form-label">Тип номера</label>
-                <select #roomTypeInput class="custom-select" formControlName="roomTypeId" id="validationCustom06" name="roomTypeId" ngModel required>
+                <select #roomTypeInput (change)="guestSelected()" ngModel class="custom-select" formControlName="roomTypeId" id="validationCustom06" name="roomTypeId" required>
                     <option selected disabled value="">Выберите...</option>
-                    <option value="0">Стандарт одноместный</option>
-                    <option value="1">Стандарт двухместный</option>
-                    <option value="2">Семейный (до 4-х гостей)</option>
-                    <option value="3">Двухкомнатный (до 6-ти гостей)</option>
-                    <option value="4">Люкс двухместный</option>
+                    <option *ngFor="let room of rooms" value="{{room.roomTypeId}}">{{room?.roomTypeName}}</option>
                 </select>
             </div>
-
     <div class="col-md-4 validate-me">
         <label for="validationCustom07" class="form-label">Дата заезда</label>
-        <input #startDate type="date" formControlName="startDate" class="form-control" id="validationCustom07" name="startDate" ngModel required>
+        <input #startDate type="date" formControlName="startDate" ngModel class="form-control" id="validationCustom07" name="startDate" required>
     </div>
     <div class="col-md-4 validate-me">
         <label for="validationCustom08" class="form-label">Дата выезда</label>
-        <input #endDate type="date" formControlName="endDate" class="form-control" id="validationCustom08" name="endDate" ngModel required>
+        <input #endDate type="date" formControlName="endDate" ngModel class="form-control" id="validationCustom08" name="endDate" required>
     </div>
     <div class="col-md-4" style="display: flex; align-items: center; column-gap: 0.5rem; margin-top: 1.5rem">
-        <input type="checkbox" formControlName="withAnimal" class="custom-checkbox" id="validationFormCheck09" name="withAnimal" ngModel>
+        <input type="checkbox" formControlName="withAnimal" ngModel class="custom-checkbox" id="validationFormCheck09" name="withAnimal">
         <label class="text" for="validationFormCheck09" style="margin-bottom: 0">Проживание с животными?</label>
     </div>
     <div class="col-md-4" >

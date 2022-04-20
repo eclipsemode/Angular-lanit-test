@@ -26,7 +26,8 @@
                         "assets": [
                             "src/assets/img",
                             "src/assets/fonts",
-                            "src/assets/css/screen.css"
+                            "src/assets/css/screen.css",
+                            "src/assets/room.json"
                         ],
                         "styles": [
                             "src/styles.sass"

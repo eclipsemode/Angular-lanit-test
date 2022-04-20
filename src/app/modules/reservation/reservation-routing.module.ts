@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-// import { HomeComponent } from '@home/pages';
 import { ModulesInfo } from '../index';
 import {ReservationComponent} from "./pages/";
 
