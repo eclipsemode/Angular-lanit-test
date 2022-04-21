@@ -11,7 +11,7 @@ export class HttpService{
     constructor(private http: HttpClient){ }
 
     getRoom() : Observable<RoomType[]> {
-        return this.http.get("assets/room.json").pipe(map((data:any)=>{
+        return this.http.get("assets/data/room.json").pipe(map((data:any)=>{
             let roomList = data["roomList"];
             return roomList.map(function(room: any): RoomType {
                 return new RoomType(room.id, room.name);
