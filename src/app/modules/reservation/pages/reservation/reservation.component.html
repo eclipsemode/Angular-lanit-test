@@ -4,15 +4,15 @@
 
             <div class="col-md-4 validate-me" #validationBlock>
                 <label for="validationCustom01" class="form-label">Имя</label>
-                <input #nameInput formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (input)="textInput(nameInput)" placeholder="Имя" required>
+                <input #nameInput formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (focus)="textInput(nameInput)" (input)="textInput(nameInput)" placeholder="Имя" required>
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom02" class="form-label">Фамилия</label>
-                <input #lastnameInput formControlName="lastName" type="text" ngModel class="form-control pattern" id="validationCustom02" name="lastName" (input)="textInput(lastnameInput)" placeholder="Фамилия" required>
+                <input #lastnameInput formControlName="lastName" type="text" ngModel class="form-control pattern" id="validationCustom02" name="lastName" (focus)="textInput(lastnameInput)" (input)="textInput(lastnameInput)" placeholder="Фамилия" required>
             </div>
             <div class="col-md-4">
                 <label for="validationCustom03" class="form-label">Отчество</label>
-                <input #patronymicInput type="text" formControlName="patronymicName" ngModel class="form-control pattern no-validate" id="validationCustom03" name="patronymicName" (input)="textInput(patronymicInput)" placeholder="Отчество">
+                <input #patronymicInput type="text" formControlName="patronymicName" ngModel class="form-control pattern no-validate" id="validationCustom03" name="patronymicName" (focus)="textInput(patronymicInput)" (input)="textInput(patronymicInput)" placeholder="Отчество">
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Дата рождения</label>

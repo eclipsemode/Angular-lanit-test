@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {roomDataForm} from "../../models/Intarface";
 import {HttpService} from "../../services/http.service";
@@ -10,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
     templateUrl: './reservation.component.html',
     providers: [HttpService]
 })
-export class ReservationComponent implements OnInit, AfterContentInit {
+export class ReservationComponent implements OnInit {
     rooms: RoomType[]=[];
     error: any
 
@@ -114,17 +114,6 @@ export class ReservationComponent implements OnInit, AfterContentInit {
 
     textInput(element: Element) {
         element.addEventListener('keydown', keyPattern)
-
-         function keyPattern(event) {
-            if (parseInt(event.key) || event.key === '0') {
-                event.preventDefault();
-                return false;
-            }
-        }
-    }
-
-    ngAfterContentInit() {
-        let patternElement = document.querySelectorAll('.pattern')
-        patternElement.forEach(element => this.textInput(element))
+        function keyPattern(event) {if (+event.key || event.key === '0') event.preventDefault()}
     }
 }
