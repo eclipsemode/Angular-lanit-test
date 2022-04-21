@@ -73,32 +73,22 @@ export class ReservationComponent implements OnInit, AfterContentInit {
         switch (roomTypeId) {
             case '0':
                 guest.setValue(roomTypeId)
-                optionGuest.forEach(element => {
-                    (<HTMLInputElement>element).value != roomTypeId ? element.setAttribute('disabled', '') : element.removeAttribute('disabled')
-                })
+                optionGuest.forEach(element => (<HTMLInputElement>element).value != roomTypeId ? element.setAttribute('disabled', '') : element.removeAttribute('disabled'))
                 break
             case '1':
-                optionGuest.forEach(element => {
-                    (<HTMLInputElement>element).value > roomTypeId ? element.setAttribute('disabled', '') : element.removeAttribute('disabled')
-                })
+                optionGuest.forEach(element => (<HTMLInputElement>element).value > roomTypeId ? element.setAttribute('disabled', '') : element.removeAttribute('disabled'))
                 guest.value > roomTypeId ? guest.setValue(roomTypeId) : guest.value
                 break
             case '2':
-                optionGuest.forEach(element => {
-                    (<HTMLInputElement>element).value > '3' ? element.setAttribute('disabled', '') : element.removeAttribute('disabled')
-                })
+                optionGuest.forEach(element => (<HTMLInputElement>element).value > '3' ? element.setAttribute('disabled', '') : element.removeAttribute('disabled'))
                 guest.value > '3' ? guest.setValue(3) : guest.value
                 break
             case '3':
-                optionGuest.forEach(element => {
-                    (<HTMLInputElement>element).value > '5' ? element.setAttribute('disabled', '') : element.removeAttribute('disabled')
-                })
+                optionGuest.forEach(element => (<HTMLInputElement>element).value > '5' ? element.setAttribute('disabled', '') : element.removeAttribute('disabled'))
                 guest.value > '5' ? guest.setValue(5) : guest.value
                 break
             case '4':
-                optionGuest.forEach(element => {
-                    (<HTMLInputElement>element).value > '1' ? element.setAttribute('disabled', '') : element.removeAttribute('disabled')
-                })
+                optionGuest.forEach(element => (<HTMLInputElement>element).value > '1' ? element.setAttribute('disabled', '') : element.removeAttribute('disabled'))
                 guest.value > '1' ? guest.setValue(1) : guest.value
                 break
         }
@@ -122,10 +112,10 @@ export class ReservationComponent implements OnInit, AfterContentInit {
             })
     }
 
-    textInput(element: Element): void {
+    textInput(element: Element) {
         element.addEventListener('keydown', keyPattern)
 
-        function keyPattern(event) {
+         function keyPattern(event) {
             if (parseInt(event.key) || event.key === '0') {
                 event.preventDefault();
                 return false;

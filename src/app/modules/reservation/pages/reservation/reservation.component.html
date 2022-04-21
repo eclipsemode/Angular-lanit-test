@@ -1,8 +1,8 @@
 <div class="page_content">
     <section class="main-section reservation-block container">
-        <form method="get" class="row needs-validation reservation" [formGroup]="dataForm" (ngSubmit)="getDataForm(dataForm)">
+        <form #form method="get" class="row needs-validation reservation" [formGroup]="dataForm" (ngSubmit)="getDataForm(dataForm)">
 
-            <div class="col-md-4 validate-me">
+            <div class="col-md-4 validate-me" #validationBlock>
                 <label for="validationCustom01" class="form-label">Имя</label>
                 <input #nameInput formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (input)="textInput(nameInput)" placeholder="Имя" required>
             </div>
@@ -20,8 +20,8 @@
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom05" class="form-label">Количество гостей</label>
-                <select #guestInput formControlName="countOfGuests" class="custom-select ttt" id="validationCustom05" ngModel name="countOfGuests" required>
-                    <option selected disabled value="">Выберите...</option>
+                <select formControlName="countOfGuests" class="custom-select ttt" id="validationCustom05" ngModel name="countOfGuests" required>
+                    <option selected disabled value=''>Выберите...</option>
                     <option class="reservation__guest-item" value="0">1 гость</option>
                     <option class="reservation__guest-item" value="1">2 гостя</option>
                     <option class="reservation__guest-item" value="2">3 гостя</option>
@@ -32,18 +32,18 @@
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom06" class="form-label">Тип номера</label>
-                <select #roomTypeInput (change)="guestSelected()" ngModel class="custom-select" formControlName="roomTypeId" id="validationCustom06" name="roomTypeId" required>
+                <select (change)="guestSelected()" ngModel class="custom-select" formControlName="roomTypeId" id="validationCustom06" name="roomTypeId" required>
                     <option selected disabled value="">Выберите...</option>
                     <option *ngFor="let room of rooms" value="{{room.roomTypeId}}">{{room?.roomTypeName}}</option>
                 </select>
             </div>
     <div class="col-md-4 validate-me">
         <label for="validationCustom07" class="form-label">Дата заезда</label>
-        <input #startDate type="date" formControlName="startDate" ngModel class="form-control" id="validationCustom07" name="startDate" required>
+        <input type="date" formControlName="startDate" ngModel class="form-control" id="validationCustom07" name="startDate" required>
     </div>
     <div class="col-md-4 validate-me">
         <label for="validationCustom08" class="form-label">Дата выезда</label>
-        <input #endDate type="date" formControlName="endDate" ngModel class="form-control" id="validationCustom08" name="endDate" required>
+        <input type="date" formControlName="endDate" ngModel class="form-control" id="validationCustom08" name="endDate" required>
     </div>
     <div class="col-md-4" style="display: flex; align-items: center; column-gap: 0.5rem; margin-top: 1.5rem">
         <input type="checkbox" formControlName="withAnimal" ngModel class="custom-checkbox" id="validationFormCheck09" name="withAnimal">
@@ -51,11 +51,8 @@
     </div>
     <div class="col-md-4" >
         <button class="btn btn-primary" type="submit" (click)="formValidate()">Забронировать</button>
-        <div class="col-md-12 validate-me">
-            <input type="text" style="display: none" [value]="nameInput.value && lastnameInput.value && guestInput.value && roomTypeInput.value && startDate.value && endDate.value" name="firstName" #wordPattern (input)="textInput(wordPattern)" required>
-            <div class="invalid-feedback" style="margin-left: -1rem">
-                Пожалуйста, заполните обязательные поля.
-            </div>
+        <div class="reservation__invalid-field" *ngIf="validationBlock.classList.contains('was-validated') && dataForm.invalid">
+            Пожалуйста, заполните обязательные поля.
         </div>
     </div>
         </form>
