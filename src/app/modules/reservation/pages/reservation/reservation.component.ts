@@ -26,7 +26,7 @@ export class ReservationComponent implements OnInit {
         countOfGuests: [1, Validators.required],
         startDate: ['', Validators.required],
         endDate: ['', Validators.required],
-        withAnimal: [{value: false, disabled: false}],
+        withAnimal: false,
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         patronymicName: '',
@@ -99,11 +99,25 @@ export class ReservationComponent implements OnInit {
             })
     }
 
-    textInput(event: any) {
+    textInput(event: { keyCode: number; preventDefault: () => void; }) {
         const inp = String.fromCharCode(event.keyCode);
 
         if (/[^a-zа-яё\s]/gi.test(inp)) event.preventDefault()
         else return true
+    }
+
+    animalDisabled() {
+        const animal = this.dataForm.get('withAnimal')
+        const room = this.dataForm.get('roomTypeId')
+
+        if (room.value === '4') {animal.disable(); animal.setValue(false)}
+        else animal.enable()
+    }
+
+    setDeparture() {
+        const endDate = this.dataForm.get('endDate')
+        const startDate = this.dataForm.get('startDate')
+        if (endDate.value < startDate.value) endDate.setValue(undefined)
     }
 
 }

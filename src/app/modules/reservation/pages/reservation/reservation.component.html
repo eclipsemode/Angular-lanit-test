@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Дата рождения</label>
-                <input type="date" formControlName="birthday" class="form-control" id="validationCustom04" name="birthday" ngModel>
+                <input type="date" max="{{minDate | date:'yyyy-MM-dd'}}" formControlName="birthday" class="form-control" id="validationCustom04" name="birthday" ngModel>
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom05" class="form-label">Количество гостей</label>
@@ -32,21 +32,21 @@
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom06" class="form-label">Тип номера</label>
-                <select (change)="guestSelected()" ngModel class="custom-select" formControlName="roomTypeId" id="validationCustom06" name="roomTypeId" required>
+                <select (change)="guestSelected(); animalDisabled()" ngModel class="custom-select" formControlName="roomTypeId" id="validationCustom06" name="roomTypeId" required>
                     <option selected disabled value="">Выберите...</option>
                     <option *ngFor="let room of rooms" value="{{room.roomTypeId}}">{{room?.roomTypeName}}</option>
                 </select>
             </div>
     <div class="col-md-4 validate-me">
         <label for="validationCustom07" class="form-label">Дата заезда</label>
-        <input type="date" min="{{minDate | date:'yyyy-MM-dd'}}" max="2030-12-31" formControlName="startDate" ngModel class="form-control" id="validationCustom07" name="startDate" required>
+        <input type="date" (change)="departure.setAttribute('min', arrival.value); setDeparture()" #arrival min="{{minDate | date:'yyyy-MM-dd'}}" max="2030-12-31" formControlName="startDate" ngModel class="form-control" id="validationCustom07" name="startDate" required>
     </div>
     <div class="col-md-4 validate-me">
         <label for="validationCustom08" class="form-label">Дата выезда</label>
-        <input type="date" min="{{minDate | date:'yyyy-MM-dd'}}" max="2030-12-31" formControlName="endDate" ngModel class="form-control" id="validationCustom08" name="endDate" required>
+        <input type="date" #departure min="{{ minDate | date:'yyyy-MM-dd'}}" max="2030-12-31" formControlName="endDate" ngModel class="form-control" id="validationCustom08" name="endDate" required>
     </div>
     <div class="col-md-4" style="display: flex; align-items: center; column-gap: 0.5rem; margin-top: 1.5rem">
-        <input type="checkbox" formControlName="withAnimal" ngModel class="custom-checkbox" id="validationFormCheck09" name="withAnimal">
+        <input type="checkbox" formControlName="withAnimal" ngModel class="custom-checkbox reservation__animal" id="validationFormCheck09" name="withAnimal">
         <label class="text" for="validationFormCheck09" style="margin-bottom: 0">Проживание с животными?</label>
     </div>
     <div class="col-md-4" >
