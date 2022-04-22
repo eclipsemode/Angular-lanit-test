@@ -1,18 +1,18 @@
 <div class="page_content">
     <section class="main-section reservation-block container">
-        <form #form method="get" class="row needs-validation reservation" [formGroup]="dataForm" (ngSubmit)="getDataForm(dataForm)">
+        <form method="get" class="row needs-validation reservation" [formGroup]="dataForm" (ngSubmit)="getDataForm(dataForm)" novalidate>
 
             <div class="col-md-4 validate-me" #validationBlock>
                 <label for="validationCustom01" class="form-label">Имя</label>
-                <input #nameInput formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (focus)="textInput(nameInput)" (input)="textInput(nameInput)" placeholder="Имя" required>
+                <input formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (keypress)="textInput($event)" placeholder="Имя" required>
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom02" class="form-label">Фамилия</label>
-                <input #lastnameInput formControlName="lastName" type="text" ngModel class="form-control pattern" id="validationCustom02" name="lastName" (focus)="textInput(lastnameInput)" (input)="textInput(lastnameInput)" placeholder="Фамилия" required>
+                <input formControlName="lastName" type="text" ngModel class="form-control pattern" id="validationCustom02" name="lastName" (keypress)="textInput($event)" placeholder="Фамилия" required>
             </div>
             <div class="col-md-4">
                 <label for="validationCustom03" class="form-label">Отчество</label>
-                <input #patronymicInput type="text" formControlName="patronymicName" ngModel class="form-control pattern no-validate" id="validationCustom03" name="patronymicName" (focus)="textInput(patronymicInput)" (input)="textInput(patronymicInput)" placeholder="Отчество">
+                <input type="text" formControlName="patronymicName" ngModel class="form-control pattern no-validate" id="validationCustom03" name="patronymicName" (keypress)="textInput($event)" placeholder="Отчество">
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Дата рождения</label>

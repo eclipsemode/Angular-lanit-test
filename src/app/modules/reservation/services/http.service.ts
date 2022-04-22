@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {RoomType} from "../models/RoomType";
-import {Observable} from 'rxjs';
+import {RoomTypeModel} from "../models/RoomType.model";
+import {Observable, of} from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { roomDataForm } from '../models/Intarface.model';
 
 @Injectable()
 export class HttpService{
@@ -10,11 +11,11 @@ export class HttpService{
     errorMessage: String = "";
     constructor(private http: HttpClient){ }
 
-    getRoom() : Observable<RoomType[]> {
+    getRoom() : Observable<RoomTypeModel[]> {
         return this.http.get("assets/data/room.json").pipe(map((data:any)=>{
             let roomList = data["roomList"];
-            return roomList.map(function(room: any): RoomType {
-                return new RoomType(room.id, room.name);
+            return roomList.map(function(room: any): RoomTypeModel {
+                return new RoomTypeModel(room.id, room.name);
             });
         }),
             catchError(err => {
@@ -22,5 +23,9 @@ export class HttpService{
                 this.errorMessage = err.message;
                 return [];
             }))
+    }
+
+    getDataForm(data: roomDataForm) {
+        return of({});
     }
 }
