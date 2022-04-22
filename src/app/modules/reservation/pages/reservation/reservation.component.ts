@@ -11,6 +11,7 @@ import {HttpClient} from "@angular/common/http";
     providers: [HttpService]
 })
 export class ReservationComponent implements OnInit {
+    minDate: Date = new Date()
     rooms: RoomTypeModel[]=[];
     error: any
 

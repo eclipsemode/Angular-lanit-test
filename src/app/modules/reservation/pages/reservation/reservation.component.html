@@ -39,11 +39,11 @@
             </div>
     <div class="col-md-4 validate-me">
         <label for="validationCustom07" class="form-label">Дата заезда</label>
-        <input type="date" formControlName="startDate" ngModel class="form-control" id="validationCustom07" name="startDate" required>
+        <input type="date" min="{{minDate | date:'yyyy-MM-dd'}}" max="2030-12-31" formControlName="startDate" ngModel class="form-control" id="validationCustom07" name="startDate" required>
     </div>
     <div class="col-md-4 validate-me">
         <label for="validationCustom08" class="form-label">Дата выезда</label>
-        <input type="date" formControlName="endDate" ngModel class="form-control" id="validationCustom08" name="endDate" required>
+        <input type="date" min="{{minDate | date:'yyyy-MM-dd'}}" max="2030-12-31" formControlName="endDate" ngModel class="form-control" id="validationCustom08" name="endDate" required>
     </div>
     <div class="col-md-4" style="display: flex; align-items: center; column-gap: 0.5rem; margin-top: 1.5rem">
         <input type="checkbox" formControlName="withAnimal" ngModel class="custom-checkbox" id="validationFormCheck09" name="withAnimal">
