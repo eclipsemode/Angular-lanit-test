@@ -27,7 +27,7 @@ export class ReservationComponent implements OnInit {
         startDate: ['', Validators.required],
         endDate: ['', Validators.required],
         withAnimal: false,
-        firstName: ['', Validators.required],
+        firstName: ['', Validators.compose([Validators.required, Validators.pattern(/[^a-zа-яё\s]/gi)])],
         lastName: ['', Validators.required],
         patronymicName: '',
         birthday: ''
@@ -99,11 +99,8 @@ export class ReservationComponent implements OnInit {
             })
     }
 
-    textInput(event) {
-        const inp = String.fromCharCode(event.keyCode);
-
-        if (/[^a-zа-яё\s]/gi.test(inp)) event.preventDefault()
-        else return true
+    textInput(element: any) {
+        element.setValue(element.value.replace(/[^a-zа-яё\s]/gi, ''));
     }
 
     animalDisabled() {

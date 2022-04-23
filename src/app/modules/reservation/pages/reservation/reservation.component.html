@@ -4,15 +4,15 @@
 
             <div class="col-md-4 validate-me" #validationBlock>
                 <label for="validationCustom01" class="form-label">Имя</label>
-                <input formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (paste)="textInput($event)" (keypress)="textInput($event)" placeholder="Имя" required>
+                <input formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (input)="textInput(dataForm.get('firstName'))" placeholder="Имя" required>
             </div>
             <div class="col-md-4 validate-me">
                 <label for="validationCustom02" class="form-label">Фамилия</label>
-                <input formControlName="lastName" type="text" ngModel class="form-control pattern" id="validationCustom02" name="lastName" (paste)="textInput($event)" (keypress)="textInput($event)" placeholder="Фамилия" required>
+                <input formControlName="lastName" type="text" ngModel class="form-control pattern" id="validationCustom02" (input)="textInput(dataForm.get('lastName'))" name="lastName" placeholder="Фамилия" required>
             </div>
             <div class="col-md-4">
                 <label for="validationCustom03" class="form-label">Отчество</label>
-                <input type="text" formControlName="patronymicName" ngModel class="form-control pattern no-validate" id="validationCustom03" name="patronymicName" (paste)="textInput($event)" (keypress)="textInput($event)" placeholder="Отчество">
+                <input type="text" formControlName="patronymicName" ngModel class="form-control pattern no-validate" (input)="textInput(dataForm.get('patronymicName'))" id="validationCustom03" name="patronymicName" placeholder="Отчество">
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Дата рождения</label>
