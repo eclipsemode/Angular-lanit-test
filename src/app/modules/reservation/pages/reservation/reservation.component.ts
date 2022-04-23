@@ -99,7 +99,7 @@ export class ReservationComponent implements OnInit {
             })
     }
 
-    textInput(event: { keyCode: number; preventDefault: () => void; }) {
+    textInput(event) {
         const inp = String.fromCharCode(event.keyCode);
 
         if (/[^a-zа-яё\s]/gi.test(inp)) event.preventDefault()
