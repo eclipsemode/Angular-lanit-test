@@ -83,7 +83,6 @@ export class ReservationComponent implements OnInit {
 
     formValidate(): void {
         const forms = document.querySelectorAll('.needs-validation')
-        const validateGroup = document.getElementsByClassName('validate-me');
 
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
@@ -92,14 +91,12 @@ export class ReservationComponent implements OnInit {
                         event.preventDefault()
                         event.stopPropagation()
                     }
-                    for (let i = 0; i < validateGroup.length; i++) {
-                        validateGroup[i].classList.add('was-validated');
-                    }
+                    form.classList.add('was-validated')
                 }, false)
             })
     }
 
-    textInput(element: any) {
+    textInput(element: { setValue: (arg0: any) => void; value: string; }) {
         element.setValue(element.value.replace(/[^a-zа-яё\s]/gi, ''));
     }
 
