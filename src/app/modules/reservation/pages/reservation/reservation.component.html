@@ -1,0 +1,60 @@
+<div class="page_content">
+    <section class="main-section reservation-block container">
+        <form method="get" class="row needs-validation reservation" [formGroup]="dataForm" (ngSubmit)="getDataForm(dataForm)" novalidate>
+
+            <div class="col-md-4 validate-me" #validationBlock>
+                <label for="validationCustom01" class="form-label">Имя</label>
+                <input formControlName="firstName" type="text" ngModel class="form-control pattern" id="validationCustom01" name="firstName" (input)="textInput(dataForm.get('firstName'))" placeholder="Имя" required>
+            </div>
+            <div class="col-md-4 validate-me">
+                <label for="validationCustom02" class="form-label">Фамилия</label>
+                <input formControlName="lastName" type="text" ngModel class="form-control pattern" id="validationCustom02" (input)="textInput(dataForm.get('lastName'))" name="lastName" placeholder="Фамилия" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom03" class="form-label">Отчество</label>
+                <input type="text" formControlName="patronymicName" ngModel class="form-control pattern no-validate" (input)="textInput(dataForm.get('patronymicName'))" id="validationCustom03" name="patronymicName" placeholder="Отчество">
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom04" class="form-label">Дата рождения</label>
+                <input type="date" max="{{minDate | date:'yyyy-MM-dd'}}" formControlName="birthday" class="form-control" id="validationCustom04" name="birthday" ngModel>
+            </div>
+            <div class="col-md-4 validate-me">
+                <label for="validationCustom05" class="form-label">Количество гостей</label>
+                <select formControlName="countOfGuests" class="custom-select ttt" id="validationCustom05" ngModel name="countOfGuests" required>
+                    <option selected disabled value=''>Выберите...</option>
+                    <option class="reservation__guest-item" value="0">1 гость</option>
+                    <option class="reservation__guest-item" value="1">2 гостя</option>
+                    <option class="reservation__guest-item" value="2">3 гостя</option>
+                    <option class="reservation__guest-item" value="3">4 гостя</option>
+                    <option class="reservation__guest-item" value="4">5 гостей</option>
+                    <option class="reservation__guest-item" value="5">6 гостей</option>
+                </select>
+            </div>
+            <div class="col-md-4 validate-me">
+                <label for="validationCustom06" class="form-label">Тип номера</label>
+                <select (change)="guestSelected(); animalDisabled()" ngModel class="custom-select" formControlName="roomTypeId" id="validationCustom06" name="roomTypeId" required>
+                    <option selected disabled value="">Выберите...</option>
+                    <option *ngFor="let room of rooms" value="{{room.roomTypeId}}">{{room?.roomTypeName}}</option>
+                </select>
+            </div>
+    <div class="col-md-4 validate-me">
+        <label for="validationCustom07" class="form-label">Дата заезда</label>
+        <input type="date" (change)="departure.setAttribute('min', arrival.value); setDeparture()" #arrival min="{{minDate | date:'yyyy-MM-dd'}}" max="2030-12-31" formControlName="startDate" ngModel class="form-control" id="validationCustom07" name="startDate" required>
+    </div>
+    <div class="col-md-4 validate-me">
+        <label for="validationCustom08" class="form-label">Дата выезда</label>
+        <input type="date" #departure min="{{ minDate | date:'yyyy-MM-dd'}}" max="2030-12-31" formControlName="endDate" ngModel class="form-control" id="validationCustom08" name="endDate" required>
+    </div>
+    <div class="col-md-4" style="display: flex; align-items: center; column-gap: 0.5rem; margin-top: 1.5rem">
+        <input type="checkbox" formControlName="withAnimal" ngModel class="custom-checkbox reservation__animal" id="validationFormCheck09" name="withAnimal">
+        <label class="text" for="validationFormCheck09" style="margin-bottom: 0">Проживание с животными?</label>
+    </div>
+    <div class="col-md-4" >
+        <button class="btn btn-primary" type="submit" (click)="formValidate()">Забронировать</button>
+        <div class="reservation__invalid-field" *ngIf="validationBlock.classList.contains('was-validated') && dataForm.invalid">
+            Пожалуйста, заполните обязательные поля.
+        </div>
+    </div>
+        </form>
+    </section>
+</div>
