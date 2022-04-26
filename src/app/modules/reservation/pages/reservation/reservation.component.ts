@@ -27,7 +27,7 @@ export class ReservationComponent implements OnInit {
         startDate: ['', Validators.required],
         endDate: ['', Validators.required],
         withAnimal: false,
-        firstName: ['', Validators.compose([Validators.required, Validators.pattern(/[^a-zа-яё\s]/gi)])],
+        firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         patronymicName: '',
         birthday: ''
